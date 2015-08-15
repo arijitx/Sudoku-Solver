@@ -1,0 +1,22 @@
+Introduction:
+============
+Sudoku Solver 1.0
+Sudoku Solver Can be used to extrat the sudoku game and can be solved from digital image!
+
+
+Usage:
+================================
+
+>>> python sudoku_solver.py
+>>> from sudoku_solver import sudokuSolve
+>>> sudokuSolve(img) //OpenCV image format
+
+
+Dependencies:
+============================================
+pytesser.py	Main module for importing
+util.py		Utility functions used by pytesser.py
+errors.py	Interprets exceptions thrown by Tesseract
+tesseract.exe	Executable called by pytesser.py
+tessdata/	Resources used by tesseract.exe
+sudoku_math.py Algorithm to solve Sudoku
