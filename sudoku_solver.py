@@ -59,6 +59,7 @@ def sudokuSolve(img):
       morph=warp[(50*y):((50*y)+50),(50*x):((50*x)+50)]
 
       morph=morph[5:45,5:45]    
+      morph=255-morph
       cv2.imwrite('sudokuDigits/cell'+str(y)+str(x)+'.jpg',morph)
 
          
@@ -68,12 +69,13 @@ def sudokuSolve(img):
   text=''      	
   fullResult=''
   print "| Recognizing Numbers. . . . "
+
   keys = [i for i in range(48,58)]
   for y in range (0,9):
       for x in range (0,9) :
           im = Image.open('sudokuDigits/cell'+str(y)+str(x)+'.jpg')
           text =pytesser.image_to_string(im)
-          if text=='\n' or ord(text[0]) not in keys:
+          if text=='\n' or text=='' or text==' ' or  ord(text[0]) not in keys:
               fullResult=fullResult+'0'
           else:
               fullResult=fullResult+str(text[0])
@@ -86,7 +88,6 @@ def sudokuSolve(img):
           print ""
 
   print ""
-
 
   print "| Solving . . . ."
   solve.r(fullResult)
